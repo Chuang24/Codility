@@ -1,0 +1,34 @@
+int binaryNumber(int N ) {
+	int a[1000], n, i,max=0,count=0,count1=0;
+	bool startcounting = false;
+	for (i = 0; N > 0; i++) {
+		a[i] = N % 2;
+		N = N / 2;
+		// start counting numbers of 0 
+		if (a[i] == 1) {
+			count1++;
+			if (count > max) {
+				max = count;
+			}
+			count = 0;
+			startcounting = true;
+		}
+		else if(startcounting){//problems here 
+			count++;
+		}
+
+		std::cout << a[i];
+
+	}
+
+	 
+
+	std::cout << std::endl;
+	//after counting the max
+	if (count1==1 || count1 ==0) {//if it is even number 
+		return 0;
+	}
+	else {
+		return max;
+	}
+}
