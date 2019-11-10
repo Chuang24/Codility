@@ -1,0 +1,28 @@
+vector<int> CyclicRotation(vector<int>& a, int k) {
+	//given an array a, goal is to rotate the array k times 
+	//calculate the index of each number based on the array size and iteration times
+	//and output the new array 
+
+
+  //if array is empty
+  if (a.size() == 0)
+		return a;
+    
+    
+	vector<int> nVect(a.size(),0);
+	int index = 0;
+	//calculate the interation
+	int iteration = k % a.size();
+	for (auto i=0; i < a.size(); i++) {
+		if (i + iteration < a.size()) {
+			index = i + iteration;
+			nVect[index] = a[i];
+		}
+		else {
+			index = i + iteration - a.size();
+			nVect[index] = a[i];
+		}
+	}
+
+	return nVect;
+}
