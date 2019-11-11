@@ -1,0 +1,16 @@
+int PermCheck(vector<int>& A) {
+	//Given an non-empty array 
+	//Goal: find if there is permutation in this sequence 
+	std::sort(A.begin(), A.end());
+	if (A[0] != 1)
+		return 0;
+	if (A.size() < 2)
+		return 0;
+
+	for (auto i = 0; i < A.size()-1; i++) {
+		
+		if (A[i] + 1 != A[i + 1])
+			return 0;
+	}
+	return 1;
+}
