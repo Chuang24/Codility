@@ -1,0 +1,21 @@
+vector<int> MaxCounters2(int N, vector<int>& A) {
+	vector<int> nVec(N,0);
+	int current_max = 0;
+	int last_increase = 0;
+
+	for (unsigned int i = 0; i < A.size(); i++) {
+		if (A[i] > N) {
+			last_increase = current_max;    
+		}
+		else {
+			nVec[A[i] - 1] = std::max(nVec[A[i]-1],last_increase);
+			nVec[A[i] - 1]++;
+			current_max = std::max(current_max, nVec[A[i - 1]]);
+		}
+	}
+	
+	for (auto i = 0; i < N;i++) {
+		nVec[i] = std::max(nVec[i], last_increase);
+	}
+	return nVec;
+}
