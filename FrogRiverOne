@@ -1,0 +1,26 @@
+int FrogRiverOne(int X, vector<int> &A) {
+	//Given a vector and a desired number X in this vector
+	//Goal is to find at which index the vector contains all 
+	//the preceding number requried to reach X
+
+	//Procedure: First calculate the necessary steps required to make to X
+	// Create a vector of booleans of size N 
+	// check if the space of the vector is occupied 
+	// if it is occupied, then skip 
+	// if it is not occupied, then mark it true and add the step count 
+	int stepsCount = ((X + 1) * X) / 2;
+	int count = 0;
+	vector<bool> checkmap(X, false);
+	for (int i = 0; i < A.size();i++ ) {
+		if (A[i]<=X) {//if the number from this big vector is within the X
+			if (!checkmap[A[i]-1]) {//check if the boolean vector is true or not 
+				checkmap[A[i] - 1] = true;
+				count+=A[i];
+			}
+		}
+		if (count == stepsCount)
+			return i;
+
+	}
+	return -1;
+}
