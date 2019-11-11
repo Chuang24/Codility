@@ -1,0 +1,19 @@
+int PassingCars(vector<int> &A) {
+	//Given an array containing 0 and 1 
+	//Each idex represents a car travelling to one direction
+	//Goal: Find the number of pairs of passing cars 
+	unsigned long count = 0; //doing so cuz it might exceeds the value
+	int right = 0;
+	for (auto i = 0; i < A.size();i++) {
+		if (A[i]==0) {
+			right++; //everytime it encounters a zero, right increments
+		}
+		else {
+			count += right;//if right is empty, then count wont increment. 
+		}
+	}
+
+	if (count > 1000000000)
+		return -1;
+	return count;
+}
